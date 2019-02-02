@@ -60,4 +60,14 @@ print(df.head(20))
 
 input("\nPress Enter to continue... \n")
 
+###Age####
+print(df.describe().age)
 
+bin_edges = [-1, 18, 35, 60, 90, 120]
+bin_names = ['Unborn - 18', '18 - 35', '35 - 60', '60 - 90', '90 - 120']
+
+df['age_stages'] = pd.cut(df['age'], bin_edges, labels=bin_names)
+
+print(df.no_show.sum())
+
+print(df.groupby('age_stages').sum().no_show)
